@@ -10,6 +10,7 @@ function a(req, res, next) {
     let result = decrypt(md5hash);
     res.send();
 }
+
 async function processor(req, res) {
     let md5hash = req.query.q;
     let conn = await mysql.createConnection({
@@ -30,6 +31,7 @@ async function processor(req, res) {
             'result': queriedResult[0]['value']
         });
     }
+    await conn.end();
 }
 
 module.exports = router;
